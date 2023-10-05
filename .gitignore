@@ -1,0 +1,14 @@
+# Ignoruj folder bin i obj
+bin/
+obj/
+
+# Ignoruj pliki konfiguracyjne Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vsidx
+
+# Inne
+.DS_Store
+Thumbs.db 
