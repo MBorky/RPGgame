@@ -1,6 +1,7 @@
 # Ignoruj folder bin i obj
 bin/
 obj/
+.vs/
 
 # Ignoruj pliki konfiguracyjne Visual Studio
 *.suo
