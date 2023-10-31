@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    internal class Statistics
-    {
-        
+    internal interface INpc
+    { 
+
     }
 }
