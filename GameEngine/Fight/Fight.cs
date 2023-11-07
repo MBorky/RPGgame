@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace Fight
 {
-    internal interface INpc
-    { 
-
+    internal class Fight
+    {
+        
     }
 }

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    internal class Statistics
+    public class Statistics
     {
-        public int Strength { get; protected set; }
+        public int Strength { get; set; }
         public int StrModifier => CalculateModifiers(Strength);
-        public int Dexterity { get; protected set; }
+        public int Dexterity { get; set; }
         public int DexModifier => CalculateModifiers(Dexterity);
-        public int Constitution { get; protected set; }
+        public int Constitution { get; set; }
         public int ConModifier => CalculateModifiers(Constitution);
-        public int Intelligence { get; protected set; }
+        public int Intelligence { get; set; }
         public int IntModifier => CalculateModifiers(Intelligence);
-        public int Wisdom { get; protected set; }
+        public int Wisdom { get; set; }
         public int WisModifier => CalculateModifiers(Wisdom);
-        public int Charisma { get; protected set; }
+        public int Charisma { get; set; }
         public int ChaModifier => CalculateModifiers(Charisma);
 
         public Statistics()
@@ -31,6 +31,16 @@ namespace GameEngine
             Wisdom = rnd.Next(10, 20);
             Charisma = rnd.Next(10, 20);
             
+        }
+        public Statistics (int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
+        {
+            Strength = strength;
+            Dexterity = dexterity;
+            Constitution = constitution;
+            Intelligence = intelligence;
+            Wisdom = wisdom;
+            Charisma = charisma;
+
         }
         public int CalculateModifiers(int stat) 
         {

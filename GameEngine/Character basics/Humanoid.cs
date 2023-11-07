@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    internal abstract class Humanoid : IPlayer, INpc
+    public abstract class Humanoid : ICloneable
     {
 
         public string Name { get; set; }
@@ -25,8 +26,12 @@ namespace GameEngine
             this.HealthPoints = healthPoints;
             this.ArmorClass = armorClass;
             this.HeavyArmor = heavyArmor;
-            
-
+        }
+        public virtual object Clone()
+        {
+            Humanoid clone = (Humanoid)MemberwiseClone();
+            clone.Stats = new Statistics(Stats.Intelligence, Stats.Dexterity, Stats.Constitution, Stats.Intelligence, Stats.Wisdom, Stats.Charisma);
+            return clone;
         }
     }
     

@@ -11,7 +11,7 @@ namespace GameEngine
     public class TeamManager
     {
         
-        public List<IPlayer> Players = new List<IPlayer>();
+        public List<Humanoid> Players = new List<Humanoid>();
         Action<string> Message = ConsoleTool.DisplayMessage;
         Func<string, string> ReadFromConsole = ConsoleTool.ReadFromConsole;
         public TeamManager() 
@@ -64,7 +64,7 @@ namespace GameEngine
         {
             string charactersInfo = "";
             StringBuilder charInfo = new StringBuilder();
-            foreach(IPlayer character in Players) 
+            foreach(Humanoid character in Players) 
             {
                 if (character is Humanoid profession)
                 {

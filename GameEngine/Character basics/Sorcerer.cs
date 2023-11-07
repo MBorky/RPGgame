@@ -11,7 +11,7 @@ namespace GameEngine
         internal Sorcerer(int level, string name, Statistics stats, int healthPoints, int armorClass, bool heavyArmor) : base(level, name, stats, healthPoints, armorClass, heavyArmor)
         {
         }
-        public static IPlayer CreatePlayer(Statistics stats, string name)
+        public static Sorcerer CreatePlayer(Statistics stats, string name)
         {
             Random rnd = new Random();
             int hp = rnd.Next(2, 6) + stats.ConModifier;

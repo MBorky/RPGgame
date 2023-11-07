@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGgame", "RPGgame.csproj",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngine", "..\GameEngine\GameEngine.csproj", "{D46D61F7-27BF-4C4A-A3B2-BE4FCE55D36B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoLibrary.Tests", "..\DemoLibrary.Tests\DemoLibrary.Tests.csproj", "{44D56FDA-451F-48E1-A9E8-198730C23579}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{D46D61F7-27BF-4C4A-A3B2-BE4FCE55D36B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D46D61F7-27BF-4C4A-A3B2-BE4FCE55D36B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D46D61F7-27BF-4C4A-A3B2-BE4FCE55D36B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44D56FDA-451F-48E1-A9E8-198730C23579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44D56FDA-451F-48E1-A9E8-198730C23579}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44D56FDA-451F-48E1-A9E8-198730C23579}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44D56FDA-451F-48E1-A9E8-198730C23579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

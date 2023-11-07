@@ -5,7 +5,7 @@
         internal Hunter(int level, string name, Statistics stats, int healthPoints, int armorClass, bool heavyArmor) : base(level, name, stats, healthPoints, armorClass, heavyArmor)
         {
         }
-        public static IPlayer CreatePlayer(Statistics stats, string name)
+        public static Hunter CreatePlayer(Statistics stats, string name)
         {
             Random rnd = new Random();
             int hp = rnd.Next(4, 8) + stats.ConModifier;

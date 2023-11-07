@@ -35,7 +35,6 @@ namespace GameEngine
         {
             Console.WriteLine($"{ message}");
         }
-   
     }
 
 }
