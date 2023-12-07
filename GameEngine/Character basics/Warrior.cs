@@ -23,5 +23,8 @@ namespace GameEngine
             Warrior clone = (Warrior)base.Clone();
             return clone;
         }
+        /* Jak zrobic by obiekty internal byly dostepne w innym projekcie, atrybut internals visible to
+         Assert is true/false Assert equals, Assert throws, Assert collection equals
+        */
     }
 }

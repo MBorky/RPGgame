@@ -16,9 +16,10 @@ namespace GameEngine
         Func<string, string> ReadFromConsole = ConsoleTool.ReadFromConsole;
         public TeamManager() 
         {
+            /* wyekstrachowac czesc losujaca, czy tez wywalic na zewnatrz wybor postaci
+             Rozbic na oddzielne metody*/
             for (int i = 0; i < 3; i++) 
             {
-                
                 Statistics stats = new Statistics();
                 PropertyInfo[] propertyInfos = typeof(Statistics).GetProperties();
 
@@ -39,8 +40,6 @@ namespace GameEngine
                 bool properChoice = false;
                 do
                 {
-
-                    
                     properChoice = Int32.TryParse(ReadFromConsole("choose number"), out character);
                     if (character == 1)
                     {
@@ -55,8 +54,6 @@ namespace GameEngine
                     {
                         Players.Add(Hunter.CreatePlayer(stats, charName));
                     }
-                  
-                    
                 } while (character > 3 || character < 1 || properChoice == false);
             }
         }
@@ -89,7 +86,6 @@ namespace GameEngine
                         { charInfo.AppendLine($" {property.Name}: {property.GetValue(profession.Stats)}"); }
                         i++;
                     }
-                    
                 }
              charInfo.Append( "\n\n\n" );
             }

@@ -20,12 +20,13 @@ namespace GameEngine
 
         internal Humanoid(int level, string name, Statistics stats, int healthPoints, int armorClass, bool heavyArmor)
         {
-            this.Level = level; 
+            this.Level = level;
             this.Name = name;
             this.Stats = stats;
             this.HealthPoints = healthPoints;
             this.ArmorClass = armorClass;
             this.HeavyArmor = heavyArmor;
+            // zrobic walidacje
         }
         public virtual object Clone()
         {
@@ -33,6 +34,12 @@ namespace GameEngine
             clone.Stats = new Statistics(Stats.Intelligence, Stats.Dexterity, Stats.Constitution, Stats.Intelligence, Stats.Wisdom, Stats.Charisma);
             return clone;
         }
+        /*void DisplayAction(List<Action> actions)
+        {
+            foreach (Action action in actions)
+            {
+                //action.Display;
+            }
+        }*/
     }
-    
 }
