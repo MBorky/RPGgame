@@ -8,3 +8,4 @@
 // klasa perki ma koordynowac dostep do perkow uzalezniony od dupereli
 TeamManager teamManager = new ();
 Console.Write(teamManager.ShowTeamInfo());
+int worldLevel = 1;
