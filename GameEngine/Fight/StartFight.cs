@@ -16,19 +16,21 @@ namespace Fight
         {
             AddPlayers(players);
             AddEnemies(players, worldLevel);
+            Characters.Sort((p1,p2) => p2.Initiative.CompareTo(p1.Initiative));
         }
         internal void AddPlayers(List<Humanoid> players)
         {
             foreach (var player in players)
             {
-                Characters.Add(player.Clone());
+                Characters.Add(new CharacterInFight(player));
             }
         }
         internal void AddEnemies(List<Humanoid> players, int worldLevel)
         {
             foreach (var player in players)
             {
-                Characters.Add(EnemyWarrior.CreateEnemy(worldLevel, GenerateName()));
+                EnemyHumanoid enemy = EnemyWarrior.CreateEnemy(worldLevel, GenerateName());
+                Characters.Add(new CharacterInFight(enemy));
             }
         }
         private string GenerateName()
@@ -50,32 +52,11 @@ namespace Fight
             }
             return name;
         }
-        // Read about linq, most popular methods in linq, learn about lambda expression
-        /*private void DetermineInitiative(List<object> characters)
-        {
-            int tempValue;
-            Random rnd = new Random();
-            foreach (var character in characters) 
-            {  
-               if (character is GameEngine.Humanoid player)
-               {
-                 
-               }
-               else if (character is GameEngine.EnemyHumanoid enemy) 
-               {
-               }
-               else
-               {
-               }
-              
-            }
-
-        }*/
-       private bool CheckingAreEnemiesAlive()
+       /*private bool CheckingAreEnemiesAlive()
         {
             foreach (var character in Characters)
             {
-                if (character is GameEngine.EnemyHumanoid enemy)
+                if (character.Character is EnemyHumanoid enemy)
                 {
                     if (enemy.HealthPoints > 0)
                     {
@@ -89,7 +70,7 @@ namespace Fight
         {
             foreach (var character in Characters)
             {
-                if (character is GameEngine.Humanoid player)
+                if (character.Character is Humanoid player)
                 {
                     if (player.HealthPoints > 0)
                     {
@@ -99,10 +80,10 @@ namespace Fight
             }
             return false;
         }
-       /*
-        * Fight has got event which change world level, end game or smthg
-        * jeszcze lepiej wzorzec obserwator do ogarnięcia
-        */
+       
+        //Fight has got event which change world level, end game or smthg
+        //jeszcze lepiej wzorzec obserwator do ogarnięcia
+    
        public void Fight()
        {   
             while (CheckingAreEnemiesAlive() == true && CheckingArePlayersCharactersAlive() == true) 
@@ -127,7 +108,7 @@ namespace Fight
             // Making list of enemies with HP
             foreach(var character in Characters)
             {
-                if (character is EnemyHumanoid enemy && enemy.HealthPoints > 0)
+                if (character.Character is EnemyHumanoid enemy && enemy.HealthPoints > 0)
                 {
                     enemies.Add(i, enemy);
 
@@ -140,7 +121,7 @@ namespace Fight
        private void Attack()
        {
 
-       }
+       }*/
     }
 
     public class BattleResult

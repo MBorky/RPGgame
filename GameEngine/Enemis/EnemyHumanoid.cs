@@ -1,7 +1,7 @@
 ﻿using System;
 namespace GameEngine
 {
-    internal abstract class EnemyHumanoid
+    internal abstract class EnemyHumanoid : ICharacter
     {
 
         public string Name { get; set; }

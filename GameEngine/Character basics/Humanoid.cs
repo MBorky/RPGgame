@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    public abstract class Humanoid : ICloneable
+    public abstract class Humanoid : ICloneable, ICharacter
     {
 
         public string Name { get; set; }
