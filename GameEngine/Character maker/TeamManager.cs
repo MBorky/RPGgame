@@ -12,12 +12,11 @@ namespace GameEngine
     {
         
         public List<Humanoid> Players = new List<Humanoid>();
-        Action<string> Message = ConsoleTool.DisplayMessage;
-        Func<string, string> ReadFromConsole = ConsoleTool.ReadFromConsole;
-        public TeamManager() 
+        private Action<string> Message = ConsoleTool.DisplayMessage;
+        private Func<string, string> ReadFromConsole = ConsoleTool.ReadFromConsole;
+        public TeamManager()    
         {
-            /* wyekstrachowac czesc losujaca, czy tez wywalic na zewnatrz wybor postaci
-             Rozbic na oddzielne metody*/
+            /* Make it more in blocks, more methods, easy to test*/
             for (int i = 0; i < 3; i++) 
             {
                 Statistics stats = new Statistics();

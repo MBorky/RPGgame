@@ -1,5 +1,4 @@
-﻿using Fight;
-using GameEngine;
+﻿using GameEngine;
 // See https://aka.ms/new-console-template for more information
 // Primitive obsession
 // Value object
@@ -10,4 +9,4 @@ using GameEngine;
 TeamManager teamManager = new ();
 Console.Write(teamManager.ShowTeamInfo());
 int worldLevel = 1;
-StartFight fight = new(teamManager.Players, worldLevel);
+GameEngine.Fight.StartFight fight = new(teamManager.Players, worldLevel);

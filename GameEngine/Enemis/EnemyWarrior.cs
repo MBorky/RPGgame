@@ -1,7 +1,7 @@
 ﻿using System;
-namespace GameEngine
+namespace GameEngine.Enemies
 {
-    internal sealed class EnemyWarrior : EnemyHumanoid
+    internal sealed class EnemyWarrior : GameEngine.Enemies.EnemyHumanoid
     {
         internal EnemyWarrior(int level, string name, int healthPoints, int armorClass) : base(level, name, healthPoints, armorClass)
         {

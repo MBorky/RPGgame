@@ -1,5 +1,5 @@
-﻿using GameEngine;
-namespace Fight
+﻿
+namespace GameEngine.Fight
 {
     internal class CharacterInFight
     {
@@ -15,7 +15,7 @@ namespace Fight
                 Console.WriteLine($"{player.Name} Initiative: {Initiative}");
 
             }
-            if(character is EnemyHumanoid enemy)
+            if(character is GameEngine.Enemies.EnemyHumanoid enemy)
             {
                 Initiative = enemy.Stats.DexModifier + rnd.Next(1, 20);
                 Character = character;

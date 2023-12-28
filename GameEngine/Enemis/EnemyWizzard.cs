@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GameEngine.Enemis
+namespace GameEngine.Enemies
 {
 	public class EmptyClass
 	{

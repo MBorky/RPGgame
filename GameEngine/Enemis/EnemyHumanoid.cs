@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GameEngine
+namespace GameEngine.Enemies
 {
     internal abstract class EnemyHumanoid : ICharacter
     {
