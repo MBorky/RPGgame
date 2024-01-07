@@ -10,3 +10,4 @@ TeamManager teamManager = new ();
 Console.Write(teamManager.ShowTeamInfo());
 int worldLevel = 1;
 GameEngine.Fight.StartFight fight = new(teamManager.Players, worldLevel);
+fight.Fight();
