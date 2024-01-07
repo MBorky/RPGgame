@@ -7,21 +7,40 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using GameEngine.Enemies;
 
 namespace GameEngine.Fight
 {
     public class StartFight
     {
         private List<CharacterInFight> Characters = new();
-        ActionsInFight ActionsInFight;
+        PlayerActions playerActions;
+        //ActionsInFight ActFight;
         private Action<string> Message = ConsoleTool.DisplayMessage;
         private Func<string, string> ReadFromConsole = ConsoleTool.ReadFromConsole;
+        private Func<string, int, int> ReadNumberFromConsole = ConsoleTool.SelectNumber;
         public StartFight(List<Humanoid> players, int worldLevel)
         {
             AddPlayers(players);
             AddEnemies(players, worldLevel);
             Characters.Sort((p1, p2) => p2.Initiative.CompareTo(p1.Initiative));
-            ActionsInFight = new(Characters);
+            playerActions = new(Characters);
+            //ActFight = new(Characters);
+        }
+        public bool Fight()
+        {
+            int tour = 1;
+            while (CheckingAreEnemiesAlive() == true && CheckingArePlayersCharactersAlive() == true)
+            {
+                
+                var (action, actionsInFight) = playerActions.SelectAction();
+                action.Invoke();
+            }
+            if (CheckingArePlayersCharactersAlive() == false)
+            {
+                return false;
+            }
+            return true;
         }
         internal void AddPlayers(List<Humanoid> players)
         {
@@ -85,66 +104,13 @@ namespace GameEngine.Fight
             }
             return false;
         }
-
         //Fight has got event which change world level, end game or smthg
         //jeszcze lepiej wzorzec obserwator do ogarnięcia
-
-        public bool Fight()
-        {
-            while (CheckingAreEnemiesAlive() == true && CheckingArePlayersCharactersAlive() == true)
-            {
-
-            }
-            if (CheckingArePlayersCharactersAlive() == false)
-            {
-                return false;
-            }
-            return true;
-        }
-        private void SelectAction()
-        {
-            int methodNumber = 0;
-            Type classType = typeof(ActionsInFight);
-            MethodInfo[] methodsInFight = classType.GetMethods();
-            
-            // Building string with methods name
-            StringBuilder methodsStrings = new StringBuilder();
-
-            foreach (MethodInfo method in methodsInFight) 
-            {
-                methodNumber++; 
-                methodsStrings.AppendLine($"{methodNumber}. {method.Name}");
-            }
-            // Printing list of actions and validate choice
-            int select;
-            bool properChoice = false;
-            // O know 
-            do
-            {
-                properChoice = Int32.TryParse(ReadFromConsole($"Select Action:\n{methodsStrings.ToString()}"), out select);
-            } while (!properChoice || select > methodNumber || select <= 0);
-            Action actionDel = (Action)Delegate.CreateDelegate(typeof(Action),ActionsInFight, methodsInFight[select - 1]);
-            actionDel();
-        }
-        private GameEngine.Enemies.EnemyHumanoid SelectEnemy()
-        {
-            int i = 1;
-            StringBuilder EnemiesInfo = new StringBuilder();
-            Dictionary<int, GameEngine.Enemies.EnemyHumanoid> enemies = new();
-            // Making list of enemies with HP
-            foreach (var character in Characters)
-            {
-                if (character.Character is GameEngine.Enemies.EnemyHumanoid enemy && enemy.HealthPoints > 0)
-                {
-                    enemies.Add(i, enemy);
-
-                    EnemiesInfo.AppendLine($"{i}. {enemy.Name}");
-                    i++;
-                }
-            }
-            // Choosing enemy
-
-        }
+       
+        // Learning process about reflection and return instance and methods in delegates
+        // I think normally i should make ActionInFight static, because this methods are not dependent on the instance state
+        
+        
 
         public class BattleResult
         {
