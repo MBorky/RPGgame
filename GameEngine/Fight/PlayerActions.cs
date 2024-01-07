@@ -10,14 +10,19 @@ namespace GameEngine.Fight
     internal class PlayerActions
     {
         List<CharacterInFight> Characters;
+        int CharacterId;
         private Func<string, int, int> ReadNumberFromConsole = ConsoleTool.SelectNumber;
-        public PlayerActions(List<CharacterInFight> characters) 
+        public PlayerActions(List<CharacterInFight> characters, int characterId) 
         {
             Characters = characters;
+            CharacterId = characterId;
         }   
         internal void Attack()
         {
-            SelectEnemy().HealthPoints = ;
+            if (Characters[CharacterId].Character is Humanoid character)
+            {
+                SelectEnemy().HealthPoints =- character.Stats.StrModifier;
+            }
             Console.WriteLine($"Attack!");
         }
         internal void UseItem()

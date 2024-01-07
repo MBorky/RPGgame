@@ -24,7 +24,7 @@ namespace GameEngine.Fight
                 SelectAction(tourInFight);
             }
         }
-       internal (Action, PlayerActions) SelectAction()
+       internal (Action, PlayerActions) SelectAction(CharacterInFight characterUsingAction)
         {
             int methodNumber = 0;
             PlayerActions actFight = new(Characters);

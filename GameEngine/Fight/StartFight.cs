@@ -33,7 +33,7 @@ namespace GameEngine.Fight
             while (CheckingAreEnemiesAlive() == true && CheckingArePlayersCharactersAlive() == true)
             {
                 
-                var (action, actionsInFight) = playerActions.SelectAction();
+                var (action, actionsInFight) = fightFlowControl.SelectAction();
                 action.Invoke();
             }
             if (CheckingArePlayersCharactersAlive() == false)
