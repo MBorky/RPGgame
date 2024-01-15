@@ -16,6 +16,7 @@ namespace GameEngine
         public Statistics Stats { get; set; }
         public int ArmorClass { get; set; }
         public bool HeavyArmor { get; set; }
+        public Equipment Equipment { get; set; }
 
 
         internal Humanoid(int level, string name, Statistics stats, int healthPoints, int armorClass, bool heavyArmor)

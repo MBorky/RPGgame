@@ -19,7 +19,7 @@ namespace GameEngine
         public static string ReadFromConsole(string message)
         {
             // I dont know if this is a good idea, but it removes warnings
-            string text;
+            string? text;
             Console.WriteLine($"{message}");
             do 
             { 
@@ -38,11 +38,11 @@ namespace GameEngine
         public static int SelectNumber(string message, int range) 
         {
             int select;
-            bool properChoice = false;
+            bool properChoice;
             do
             {
                 properChoice = Int32.TryParse(ReadFromConsole(message), out select);
-            } while (!properChoice || select > range || select <= 0);
+            } while (!properChoice || select >= range || select <= 0);
             return select - 1;
         }
     }

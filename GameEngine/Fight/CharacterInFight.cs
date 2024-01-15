@@ -15,7 +15,7 @@ namespace GameEngine.Fight
                 Console.WriteLine($"{player.Name} Initiative: {Initiative}");
 
             }
-            if(character is GameEngine.Enemies.EnemyHumanoid enemy)
+            else if(character is GameEngine.Enemies.EnemyHumanoid enemy)
             {
                 Initiative = enemy.Stats.DexModifier + rnd.Next(1, 20);
                 Character = character;

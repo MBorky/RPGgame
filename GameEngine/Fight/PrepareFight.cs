@@ -11,36 +11,42 @@ using GameEngine.Enemies;
 
 namespace GameEngine.Fight
 {
-    public class StartFight
+    public class PrepareFight
     {
         private List<CharacterInFight> Characters = new();
-        PlayerActions playerActions;
-        //ActionsInFight ActFight;
-        private Action<string> Message = ConsoleTool.DisplayMessage;
-        private Func<string, string> ReadFromConsole = ConsoleTool.ReadFromConsole;
-        private Func<string, int, int> ReadNumberFromConsole = ConsoleTool.SelectNumber;
-        public StartFight(List<Humanoid> players, int worldLevel)
+        public PrepareFight(List<Humanoid> players, int worldLevel)
         {
             AddPlayers(players);
             AddEnemies(players, worldLevel);
             Characters.Sort((p1, p2) => p2.Initiative.CompareTo(p1.Initiative));
-            playerActions = new(Characters);
             //ActFight = new(Characters);
         }
-        public bool Fight()
+        // Should it be done by static method like here, or callbacks?
+        // I think static methods are ok, because method fight will not be used 
+        // with others methods
+
+        public BattleResult StartFight()
         {
-            int tour = 1;
-            while (CheckingAreEnemiesAlive() == true && CheckingArePlayersCharactersAlive() == true)
+            int charactersQueue = 0;
+            FightControl fightControl = new(Characters);
+            while (fightControl.CheckingAreEnemiesAlive(Characters) == true && fightControl.CheckingArePlayersCharactersAlive(Characters) == true)
             {
-                
-                var (action, actionsInFight) = fightFlowControl.SelectAction();
-                action.Invoke();
+                if (Characters[charactersQueue].Character is EnemyHumanoid)
+                {
+                    charactersQueue++;
+                }
+                else
+                {
+                    var (action, playerAction) = fightControl.SelectAction(charactersQueue);
+                    action?.Invoke();
+                    charactersQueue++;
+                }
+                if (charactersQueue == Characters.Count)
+                {
+                    charactersQueue = 0;
+                }
             }
-            if (CheckingArePlayersCharactersAlive() == false)
-            {
-                return false;
-            }
-            return true;
+            return fightControl.CheckingArePlayersCharactersAlive(Characters);
         }
         internal void AddPlayers(List<Humanoid> players)
         {
@@ -76,45 +82,12 @@ namespace GameEngine.Fight
             }
             return name;
         }
-        private bool CheckingAreEnemiesAlive()
-        {
-            foreach (var character in Characters)
-            {
-                if (character.Character is GameEngine.Enemies.EnemyHumanoid enemy)
-                {
-                    if (enemy.HealthPoints > 0)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-        private bool CheckingArePlayersCharactersAlive()
-        {
-            foreach (var character in Characters)
-            {
-                if (character.Character is Humanoid player)
-                {
-                    if (player.HealthPoints > 0)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+       
         //Fight has got event which change world level, end game or smthg
         //jeszcze lepiej wzorzec obserwator do ogarnięcia
        
         // Learning process about reflection and return instance and methods in delegates
         // I think normally i should make ActionInFight static, because this methods are not dependent on the instance state
-        
-        
-
-        public class BattleResult
-        {
-        }
     }
 }
 
@@ -126,3 +99,5 @@ namespace GameEngine.Fight
  * Osoba, która umiera jest usuwana z listy, czyli nie będzie wogóle możliwości padniętej osoby wskrzeszania?
  * Ew kolejna lista może być shallow copy, na wszelki wypadek
  */
+
+// Pomyśleć o swojej kolekcji danych

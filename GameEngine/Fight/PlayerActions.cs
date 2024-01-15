@@ -21,7 +21,13 @@ namespace GameEngine.Fight
         {
             if (Characters[CharacterId].Character is Humanoid character)
             {
-                SelectEnemy().HealthPoints =- character.Stats.StrModifier;
+                int dmg = character.Stats.StrModifier + character.Level;
+                if(dmg < 1)
+                {
+                    dmg = 1;
+                }
+                SelectEnemy().HealthPoints -= dmg;
+                // Test
             }
             Console.WriteLine($"Attack!");
         }
@@ -44,7 +50,7 @@ namespace GameEngine.Fight
             {
                 if (character.Character is GameEngine.Enemies.EnemyHumanoid enemy && enemy.HealthPoints > 0)
                 {
-                    enemies.Add(enemiesNumber, enemy);
+                    enemies.Add(enemiesNumber - 1, enemy);
 
                     enemiesInfo.AppendLine($"{enemiesNumber}. {enemy.Name}");
                     enemiesNumber++;

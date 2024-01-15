@@ -1,4 +1,5 @@
 ﻿using GameEngine;
+using GameEngine.Fight;
 // See https://aka.ms/new-console-template for more information
 // Primitive obsession
 // Value object
@@ -9,5 +10,20 @@
 TeamManager teamManager = new ();
 Console.Write(teamManager.ShowTeamInfo());
 int worldLevel = 1;
-GameEngine.Fight.StartFight fight = new(teamManager.Players, worldLevel);
-fight.Fight();
+
+GameEngine.Fight.PrepareFight preparedFight = new(teamManager.Players, worldLevel);
+BattleResult result;
+do 
+{
+    result = preparedFight.StartFight();
+    if (result.BattleSuccess)
+    {
+        worldLevel++;
+    }
+} while (result.BattleSuccess);
+
+
+// Obserwator, do zmiany świata
+
+
+
