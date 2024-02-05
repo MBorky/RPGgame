@@ -10,6 +10,7 @@ namespace GameEngine.Fight
     {
         public event Action? CreateItems;
         private bool _battleSucess;
+        //tutaj event
         public bool BattleSuccess 
         {
             get { return _battleSucess; }
