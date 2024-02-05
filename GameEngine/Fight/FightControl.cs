@@ -12,12 +12,10 @@ namespace GameEngine.Fight
         List<CharacterInFight> Characters;
         private Func<string, int, int> ReadNumberFromConsole = ConsoleTool.SelectNumber;
         private Action<string> DisplayMessage = ConsoleTool.DisplayMessage;
-        int charactersQueue = 0;
         public FightControl(List<CharacterInFight> characters) 
         {
             Characters = characters;
         }
-       
         internal (Action, PlayerActions) SelectAction(int characterQueue)
         {
             int methodNumber = 0;
@@ -54,7 +52,7 @@ namespace GameEngine.Fight
             }
             return false;
         }
-        internal BattleResult CheckingArePlayersCharactersAlive(List<CharacterInFight> Characters)
+        internal bool CheckingArePlayersCharactersAlive(List<CharacterInFight> Characters)
         {
             foreach (var character in Characters)
             {
@@ -62,12 +60,11 @@ namespace GameEngine.Fight
                 {
                     if (player.HealthPoints > 0)
                     {
-                        return new BattleResult { BattleSuccess = true };
+                        return true;
                     }
                 }
             }
-            return new BattleResult { BattleSuccess = false };
+            return false;
         }
-
     }
 }

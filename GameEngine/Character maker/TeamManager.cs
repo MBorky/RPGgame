@@ -91,6 +91,5 @@ namespace GameEngine
             charactersInfo = charInfo.ToString();
             return charactersInfo;
         }
-        
     }
 }

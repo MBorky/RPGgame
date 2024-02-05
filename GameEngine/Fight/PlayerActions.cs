@@ -21,7 +21,7 @@ namespace GameEngine.Fight
         {
             if (Characters[CharacterId].Character is Humanoid character)
             {
-                int dmg = character.Stats.StrModifier + character.Level;
+                int dmg = character.Stats.StrModifier + character.Level + character.Equipment.Weapon.BaseDmg;
                 if(dmg < 1)
                 {
                     dmg = 1;

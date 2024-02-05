@@ -4,7 +4,7 @@ namespace GameEngine.Fight
     internal class CharacterInFight
     {
         internal int Initiative {get; set;}
-        internal ICharacter Character {get;}
+        internal ICharacter? Character {get;}
         internal CharacterInFight(ICharacter character)
         {   
             Random rnd = new Random();

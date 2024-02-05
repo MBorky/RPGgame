@@ -8,6 +8,17 @@ namespace GameEngine.Fight
 {
     public class BattleResult
     {
-        public bool BattleSuccess { get; set; }
+        public event Action? CreateItems;
+        private bool _battleSucess;
+        public bool BattleSuccess 
+        {
+            get { return _battleSucess; }
+            set { _battleSucess = value;
+                if (value)
+                {
+                    CreateItems?.Invoke();
+                }
+            } 
+        }
     }
 }

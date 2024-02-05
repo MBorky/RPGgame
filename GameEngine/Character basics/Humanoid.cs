@@ -27,6 +27,7 @@ namespace GameEngine
             this.HealthPoints = healthPoints;
             this.ArmorClass = armorClass;
             this.HeavyArmor = heavyArmor;
+            this.Equipment = new Equipment();
             // zrobic walidacje
         }
         public virtual object Clone()
